@@ -13,6 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build
   displayName: 'dotnet build $(buildConfiguration)'
 - task: PublishPipelineArtifact@0
+ # --configuration $(buildConfiguration)

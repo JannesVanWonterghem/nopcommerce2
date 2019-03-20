@@ -12,17 +12,12 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
-steps:
-- task: DotNetCoreCLI@2
-  displayName: displayName
-  name: test
-  inputs:
-    command: publish
-    publishWebProjects: true
-     
+steps:     
+- script: dotnet build $(Build.SourcesDirectory)/Presentation/Nop.Web/Nop.Web.csproj --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+- script: dotnet publish $(Build.SourcesDirectory)/Presentation/Nop.Web/Nop.Web.csproj --configuration $(buildConfiguration)
 
-#- script: dotnet build $(Build.SourcesDirectory)/Presentation/Nop.Web/Nop.Web.csproj --configuration $(buildConfiguration)
-#  displayName: 'dotnet build $(buildConfiguration)'
+
 #- task: PublishBuildArtifacts@1
 #  inputs:
 #    artifactName: 'Publish Build Artifact'
